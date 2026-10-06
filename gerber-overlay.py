@@ -122,9 +122,9 @@ class GerberMergerApp(tk.Tk):
         )
         if filename:
             target_var.set(filename)
-            if not self.output_var.get() and self.file1_var.get():
-                base_dir = os.path.dirname(self.file1_var.get())
-                self.output_var.set(os.path.join(base_dir, "merged_output.gbr"))
+            # Default output file path to the exact path of the base Gerber (File 1)
+            if self.file1_var.get():
+                self.output_var.set(self.file1_var.get())
 
     def browse_save_file(self):
         filename = filedialog.asksaveasfilename(
